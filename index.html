@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		
+		
+		<script src="vue-2.4.0.js"></script>
+
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h1>{{add}}</h1>
+			<button @click="com()">Click me</button>
+		</div>
+		<script type="text/javascript">
+				new Vue({
+					el:'#app',
+					data:{
+						a:2,
+						b:3
+					},
+					methods:{
+						com:function(){
+							// this.a++
+						}
+					},
+					computed:{
+						add:function(){
+							// var result = null;
+							// this.a++;
+							// this.b += this.a;
+							return new Date();
+						}
+					}
+				})
+		</script>
+	</body>
+</html>
