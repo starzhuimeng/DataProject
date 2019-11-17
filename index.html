@@ -2,39 +2,44 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		
-		
 		<script src="vue-2.4.0.js"></script>
-
 		<title></title>
+		<style type="text/css">
+			.v-enter,
+			.v-leave-to{
+				opacity: 0;
+				transform: translateY(150px);
+			}
+			.v-enter-active,
+			.v-leave-active{
+				transition: all 0.5s ease;
+			}
+		</style>
 	</head>
 	<body>
 		
 		<div id="app">
-			<h1>{{add}}</h1>
-			<button @click="com()">Click me</button>
+			<div>
+				<a href="" @click.prevent="com='login'">注册</a>  <a href="" @click.prevent="com='regi'">登录</a>
+			</div>
+			<transition mode="out-in">
+				<component :is="com"></component>
+			</transition>
 		</div>
-		<script type="text/javascript">
-				new Vue({
-					el:'#app',
-					data:{
-						a:2,
-						b:3
-					},
-					methods:{
-						com:function(){
-							// this.a++
-						}
-					},
-					computed:{
-						add:function(){
-							// var result = null;
-							// this.a++;
-							// this.b += this.a;
-							return new Date();
-						}
-					}
-				})
+		<script>
+			Vue.component('login',{
+				template:"<h1>login组件</h1>"
+			})
+			Vue.component('regi',{
+				template:"<h1>regi组件</h1>"
+			})
+			
+			var app = new Vue({
+				el:'#app',
+				data:{
+					com:"login"
+				}
+			})
 		</script>
 	</body>
 </html>
